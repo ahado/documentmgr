@@ -5,10 +5,8 @@ import android.os.*;
 import android.view.*;
 import android.widget.*;
 import android.content.*;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
 
-public class MainActivity extends ActionBarActivity
+public class MainActivity extends Activity
 {
 	public static final String CURRENT_TOPIC = "currentTopic";
 	String currentTopic = null;
@@ -24,7 +22,7 @@ public class MainActivity extends ActionBarActivity
 		SharedPreferences preferences = getPreferences(0);
 		currentTopic = preferences.getString(CURRENT_TOPIC, null);
 		
-		ActionBar actionBar = getSupportActionBar();
+		ActionBar actionBar = getActionBar();
 		actionBar.setSubtitle(currentTopic);
     }
 
@@ -46,7 +44,7 @@ public class MainActivity extends ActionBarActivity
 				SharedPreferences.Editor editor = preferences.edit();
 				editor.putString(CURRENT_TOPIC,currentTopic);
 				editor.commit();
-				ActionBar actionBar = getSupportActionBar();
+				ActionBar actionBar = getActionBar();
 				actionBar.setSubtitle(currentTopic);
 				return true;
 			case R.id.action_exit:
